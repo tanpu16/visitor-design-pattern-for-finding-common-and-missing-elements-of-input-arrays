@@ -1,5 +1,5 @@
 package arrayvisitors.visitors;
 
-public class MissingIntsVisitor {
+public class MissingIntsVisitor implements Visitor {
 
 }

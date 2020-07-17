@@ -1,5 +1,5 @@
 package arrayvisitors.visitors;
 
-public class Visitor {
+public interface Visitor {
 
 }

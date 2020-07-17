@@ -1,5 +1,5 @@
 package arrayvisitors.visitors;
 
-public class CommonIntsVisitor {
+public class CommonIntsVisitor implements Visitor{
 
 }
