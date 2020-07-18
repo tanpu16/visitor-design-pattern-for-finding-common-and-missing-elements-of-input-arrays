@@ -1,5 +1,9 @@
 package arrayvisitors.visitors;
 
-public class Element {
+import arrayvisitors.util.Results;
+
+public interface Element {
+	
+	public void accept(Visitor visitor,Results resIn);
 
 }

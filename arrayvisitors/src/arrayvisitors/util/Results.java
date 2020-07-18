@@ -3,6 +3,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.InvalidPathException;
+import java.util.HashSet;
+import java.util.Set;
 
 //import studentskills.util.MyLogger.DebugLevel;
 
@@ -11,7 +13,8 @@ import java.io.BufferedWriter;
 
 public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 	String path;
-	StringBuffer finalResult=new StringBuffer(); 
+	StringBuffer finalResult= new StringBuffer(); 
+	Set<Integer> commonInts = new HashSet<Integer>();
 	
 	//parameterized constructor
 	public Results(String FilePath) 
@@ -32,14 +35,12 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 	@return void
 	@see print nothing but append output line for tree traversal and error message
 	*/
-	public void store(String str)
+	public void store(int value)
 	{
-				
-		finalResult.append(str);				
-	
+		commonInts.add(value);
 	}
 	
-
+	
 	/*this is generic void method, which write output to all 3 output.txt or error.txt depends on
 	the instance used to call this method.
 	@param NA
@@ -50,9 +51,14 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 	{
 		//MyLogger.writeMessage("Write to file method called", DebugLevel.RESULT);
 		BufferedWriter bw = new BufferedWriter(new FileWriter(new File(path)));
-		
 		try
 		{
+			for(int itr : commonInts)
+			{
+				finalResult.append(Integer.toString(itr));
+				finalResult.append("\n");
+			}
+			
 			bw.write(finalResult.toString());
 			bw.close();
 		}
@@ -83,4 +89,6 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 		//MyLogger.writeMessage("Write to stdout method called", DebugLevel.RESULT);
 		System.out.println(finalResult);	
 	}
+
+
 }

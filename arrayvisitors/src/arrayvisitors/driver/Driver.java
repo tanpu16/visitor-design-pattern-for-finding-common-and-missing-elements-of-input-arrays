@@ -8,8 +8,12 @@ import arrayvisitors.adt.MyArray;
 import arrayvisitors.adt.MyArrayI;
 import arrayvisitors.adt.MyArrayList;
 import arrayvisitors.adt.MyArrayListI;
+import arrayvisitors.util.FileDisplayInterface;
 import arrayvisitors.util.FileProcessor;
+import arrayvisitors.util.Results;
+import arrayvisitors.visitors.CommonIntsVisitor;
 import arrayvisitors.visitors.PopulateMyArrayVisitor;
+import arrayvisitors.visitors.Visitor;
 
 /**
  * @author John Doe
@@ -35,16 +39,27 @@ public class Driver {
 		MyArrayListI list = new MyArrayList();
 		MyArrayI array1 = new MyArray();
 		MyArrayI array2 = new MyArray();
-		PopulateMyArrayVisitor pv;
+		PopulateMyArrayVisitor pv = new PopulateMyArrayVisitor();
+		FileDisplayInterface outputRes1 = new Results(args[2]);
+		FileDisplayInterface outputRes2 = new Results(args[3]);
 		try 
 		{
 			fp = new FileProcessor(args[0]);
-			pv = new PopulateMyArrayVisitor(array1);
-			pv.inputParser(fp,list);
+			pv.setInputFile(fp);
+			array1.accept(pv,(Results)outputRes1);
 			fp = new FileProcessor(args[1]);
-			pv = new PopulateMyArrayVisitor(array2);
-			pv.inputParser(fp,list);
+			pv.setInputFile(fp);
+			array2.accept(pv,(Results)outputRes2);
 			
+			list.getArrayList().add(array1);
+			list.getArrayList().add(array2);
+			
+			Visitor commonVisitor = new CommonIntsVisitor();
+			list.accept(commonVisitor,(Results)outputRes1);
+			outputRes1.writeToFile();
+			((Results)outputRes1).writeToStdout();
+			
+			//commonVisitor.s
 			/*
 			System.out.println("arrays1 display");
 			array1.displayArray();

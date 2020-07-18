@@ -1,5 +1,10 @@
 package arrayvisitors.adt;
 
+import java.io.IOException;
+
+import arrayvisitors.util.Results;
+import arrayvisitors.visitors.Visitor;
+
 public class MyArray implements MyArrayI{
 
 	private int[] array = new int[10];
@@ -20,6 +25,14 @@ public class MyArray implements MyArrayI{
 	public void setCapacity(int capacityIn) {
 			capacity = capacityIn;
 	}
+	
+	
+	public void accept(Visitor visitor,Results resIn)
+	{
+		visitor.visit(this,resIn);
+		
+	}
+	
 	
 	public void displayArray()
 	{
