@@ -1,6 +1,20 @@
 package arrayvisitors.util;
 
-public class MyLogger {
+public class SingletonMyLogger {
+	
+		static SingletonMyLogger uniqueInstance;
+	
+		private SingletonMyLogger() {}
+		
+		public static SingletonMyLogger getInstance()
+		{
+			if(null == uniqueInstance)
+			{
+				uniqueInstance = new SingletonMyLogger();
+			}
+			
+			return uniqueInstance;
+		}
 
 	    public static enum DebugLevel { CONSTRUCTOR, FILE_PROCESSOR, NONE, UPDATE, NOTIFY, CLONE, REGISTER, BST, RESULT
 	                                   };

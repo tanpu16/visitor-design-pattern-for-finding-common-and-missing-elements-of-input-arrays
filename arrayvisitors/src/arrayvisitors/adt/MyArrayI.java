@@ -1,10 +1,7 @@
 package arrayvisitors.adt;
 
-import java.io.IOException;
-
-import arrayvisitors.util.Results;
 import arrayvisitors.visitors.Element;
-import arrayvisitors.visitors.Visitor;
+
 
 public interface MyArrayI extends Element{
 

@@ -15,6 +15,7 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 	String path;
 	StringBuffer finalResult= new StringBuffer(); 
 	Set<Integer> commonInts = new HashSet<Integer>();
+	int index = 1;
 	
 	//parameterized constructor
 	public Results(String FilePath) 
@@ -37,6 +38,7 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 	*/
 	public void store(int value)
 	{
+
 		commonInts.add(value);
 	}
 	
@@ -51,14 +53,23 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 	{
 		//MyLogger.writeMessage("Write to file method called", DebugLevel.RESULT);
 		BufferedWriter bw = new BufferedWriter(new FileWriter(new File(path)));
+		
 		try
 		{
 			for(int itr : commonInts)
 			{
-				finalResult.append(Integer.toString(itr));
+				String str;
+				if(itr < 10)
+				{
+					str = String.format("%02d", itr);
+				}
+				else
+				{
+					str = Integer.toString(itr);
+				}
+				finalResult.append(str);
 				finalResult.append("\n");
 			}
-			
 			bw.write(finalResult.toString());
 			bw.close();
 		}

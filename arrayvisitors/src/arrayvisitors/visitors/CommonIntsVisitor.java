@@ -1,9 +1,5 @@
 package arrayvisitors.visitors;
 
-
-import java.util.HashSet;
-import java.util.Set;
-
 import arrayvisitors.adt.MyArrayI;
 import arrayvisitors.adt.MyArrayListI;
 import arrayvisitors.util.Results;

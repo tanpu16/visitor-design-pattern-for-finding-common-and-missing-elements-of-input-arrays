@@ -1,7 +1,5 @@
 package arrayvisitors.adt;
 
-import java.io.IOException;
-
 import arrayvisitors.util.Results;
 import arrayvisitors.visitors.Visitor;
 

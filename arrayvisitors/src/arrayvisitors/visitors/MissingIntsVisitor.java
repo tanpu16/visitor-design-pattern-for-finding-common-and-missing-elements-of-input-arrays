@@ -17,6 +17,29 @@ public class MissingIntsVisitor implements Visitor {
 		// TODO Auto-generated method stub
 		
 		
+		int range = 100;
+		
+		int present[] = new int[range];
+		
+		for(int i=00; i<range; i++)
+		{
+			present[i] = 0;
+		}
+
+		for(int i=0; i<myArrayObj.getArray().length;i++)
+		{
+			present[myArrayObj.getArray()[i]] = 1;
+		}
+		
+		for(int j=0; j<present.length;j++)
+		{
+			if(present[j] == 0)
+			{
+				res.store(j);
+			}
+		}
+		
+		
 		
 	}
 
